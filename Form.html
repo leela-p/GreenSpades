@@ -1,0 +1,71 @@
+<html ng-app="xyz">
+
+  
+<head>
+    
+<meta charset="utf-8" />
+   
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" scr="access.js"></script>
+</head>
+
+  
+<body ng-controller="MainCtrl">
+ 
+<div class="shape"> 
+<button ng-click="moreInputs()"><div class="circle"><div class='horizontal-plus'></div> 
+  <div class='vertical-plus'></div></div></button>  
+<select class="text2">
+  <option ng-repeat="x in myData" value="{{x}}">
+    {{x}}
+  </option>
+</select>
+<div class="div" ng-repeat="input in inputs track by $index">
+    
+<span ng-hide="custom">  
+<select class="drop">
+  <option value="AND">AND</option>
+  <option value="OR">OR</option>
+</select>
+<select class="text2">
+  <option ng-repeat="x in myData" value="{{x}}">
+    {{x}}
+  </option>
+</select> <button ng-click="Remove($index)"> <div class="close"></div> </button>
+</span>
+</div>
+<section>
+ <div id="div1" style="color:#b2dd1d;font-weight:bold"> Quantity</div> <span style="color:#cc0000;">* </span>
+<div id="div" style="color:#b2dd1d;font-weight:bold">Amount</div><span style="color:#cc0000;">* </span> </section>
+Product <input type="text" class="text1" value="item1">
+<input type="text" value="1" class="text3">  
+<input type="text" class="text3" value="10"> Amts </p>
+</div>
+<div class="but"><button class="button">ADD </button> </div>
+</body>
+<script>
+var app = angular.module('xyz', []);
+
+
+app.controller('MainCtrl',function($scope,$http) {
+ 
+$http.get("http://35.154.241.44:5555/api/v1/gspade/data").then(function (response) {
+     
+      $scope.myData=response.data.categories;
+      
+  });  
+$scope.inputs = [0]; 
+$scope.moreInputs = function() {
+         
+$scope.inputs.push(0);
+ $scope.custom=true;
+$scope.custom=false; 
+}
+$scope.Remove=function(i) {
+$scope.inputs.splice(i,1);
+}
+
+}); 
+</script>
