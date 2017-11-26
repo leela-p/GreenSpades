@@ -1,0 +1,198 @@
+<html ng-app="xyz">
+
+  
+<head>
+    
+<meta charset="utf-8" />
+   
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.text1 {
+ width: 30%;
+    padding: 12px 20px;
+    margin: 20px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.text2 {
+ width: 50%;
+    padding: 20px 15px;
+    margin: 20px 30;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.text3 {
+ width: 10%;
+padding: 12px 20px; 
+ margin: 20px 10px;
+display: inline-block;
+border: 1px solid #ccc;
+    box-sizing: border-box;
+background-color:white;}
+.button {
+    background-color: #b2dd1d;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+}
+.shape
+{
+border-style:solid;
+text-align:center;
+border-color:#b2dd1d;
+padding:40px;
+ }
+.circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color:#b2dd1d;
+}
+
+.horizontal-plus {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 50%;
+  height: 12.5%;
+  left: 25%;
+  top: 43.75%;
+}
+.vertical-plus {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 12.5%;
+  height: 50%;
+  left: 43.75%;
+  top: 12.5%;
+}
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.drop {
+background-color:#b2dd1d;
+border-radius:50px;
+border-color:#b2dd1d;
+font-weight:bold;
+color:#FFFFFF;
+margin:5px;
+}
+.close {
+  opacity: 0.3;
+  position:absolute;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 0px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+   bottom: 1px;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+#div1 { 
+display: inline-block;
+    width:60px;
+    height:10px;
+padding-left:450px;
+ }
+#div {
+display: inline-block;
+    width:60px;
+    height:20px;
+padding-left:90px;
+ }
+section {
+padding-top:40px;
+}
+.but {
+padding-left:50%;
+padding-top: 20px;
+}
+
+
+</style>
+</head>
+
+  
+<body ng-controller="MainCtrl">
+ 
+<div class="shape"> 
+<button ng-click="moreInputs()"><div class="circle"><div class='horizontal-plus'></div> 
+  <div class='vertical-plus'></div></div></button>  
+<select class="text2">
+  <option ng-repeat="x in myData" value="{{x}}">
+    {{x}}
+  </option>
+</select>
+<div class="div" ng-repeat="input in inputs track by $index">
+    
+<span ng-hide="custom">  
+<select class="drop">
+  <option value="AND">AND</option>
+  <option value="OR">OR</option>
+</select>
+<select class="text2">
+  <option ng-repeat="x in myData" value="{{x}}">
+    {{x}}
+  </option>
+</select> <button ng-click="Remove($index)"> <div class="close"></div> </button>
+</span>
+</div>
+<section>
+ <div id="div1" style="color:#b2dd1d;font-weight:bold"> Quantity</div> <span style="color:#cc0000;">* </span>
+<div id="div" style="color:#b2dd1d;font-weight:bold">Amount</div><span style="color:#cc0000;">* </span> </section>
+Product <input type="text" class="text1" value="item1">
+<input type="text" value="1" class="text3">  
+<input type="text" class="text3" value="10"> Amts </p>
+</div>
+<div class="but"><button class="button">ADD </button> </div>
+</body>
+<script>
+var app = angular.module('xyz', []);
+
+
+app.controller('MainCtrl',function($scope,$http) {
+ 
+$http.get("http://35.154.241.44:5555/api/v1/gspade/data").then(function (response) {
+     
+      $scope.myData=response.data.categories;
+      
+  });  
+ $scope.inputs = [0];
+ 
+ $scope.custom=true;
+$scope.moreInputs = function() {
+         
+$scope.inputs.push(0);
+$scope.custom=false; 
+};
+$scope.Remove=function(i) {
+$scope.inputs.splice(i,1);
+}
+
+}); 
+</script>
+</html>
+
