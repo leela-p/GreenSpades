@@ -1,0 +1,122 @@
+.text1 {
+ width: 30%;
+    padding: 12px 20px;
+    margin: 20px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.text2 {
+ width: 50%;
+    padding: 20px 15px;
+    margin: 20px 30;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.text3 {
+ width: 10%;
+padding: 12px 20px; 
+ margin: 20px 10px;
+display: inline-block;
+border: 1px solid #ccc;
+    box-sizing: border-box;
+background-color:white;}
+.button {
+    background-color: #b2dd1d;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+}
+.shape
+{
+border-style:solid;
+text-align:center;
+border-color:#b2dd1d;
+padding:40px;
+ }
+.circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color:#b2dd1d;
+}
+
+.horizontal-plus {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 50%;
+  height: 12.5%;
+  left: 25%;
+  top: 43.75%;
+}
+.vertical-plus {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 12.5%;
+  height: 50%;
+  left: 43.75%;
+  top: 12.5%;
+}
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.drop {
+background-color:#b2dd1d;
+border-radius:50px;
+border-color:#b2dd1d;
+font-weight:bold;
+color:#FFFFFF;
+margin:5px;
+}
+.close {
+  opacity: 0.3;
+  position:absolute;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 0px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+   bottom: 1px;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+#div1 { 
+display: inline-block;
+    width:60px;
+    height:10px;
+padding-left:450px;
+ }
+#div {
+display: inline-block;
+    width:60px;
+    height:20px;
+padding-left:90px;
+ }
+section {
+padding-top:40px;
+}
+.but {
+padding-left:50%;
+padding-top: 20px;
+}
